@@ -1,0 +1,185 @@
+@import url("http://fonts.googleapis.com/css?family=Lato:100,400");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #313131;
+  font: 14px 'Lato', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  position: relative;
+  overflow: hidden;
+}
+.ruler,
+.ruler li {
+  list-style: none;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.before,
+.after,
+.ruler li:after,
+.ruler:after,
+.ruler.horz li:before,
+.ruler.horz:before,
+.ruler.vert li:before {
+  display: block;
+  width: 50px;
+}
+.before,
+.ruler.horz li:before,
+.ruler.horz:before,
+.ruler.vert li:before {
+  border-right: 1px solid #999;
+  height: 5px;
+  padding: 2px 0 0 2px;
+}
+.after,
+.ruler li:after,
+.ruler:after {
+  content: '';
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 25px;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+}
+.ruler {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 2100px;
+  font-family: monospace;
+  font-size: 9px;
+  padding-left: 100px;
+  color: #999;
+}
+.ruler li {
+  float: left;
+  width: 100px;
+  border-left: 1px solid #999;
+}
+.ruler.horz {
+  counter-reset: hruler;
+}
+.ruler.horz li:before {
+  counter-increment: hruler;
+  content: counter(hruler) '00';
+}
+.ruler.horz:before {
+  content: "0";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+.ruler.vert {
+  counter-reset: vruler 21;
+  -webkit-transform: rotate(270deg);
+  top: 1042px;
+  left: -1042px;
+}
+.ruler.vert li {
+  float: left;
+  width: 100px;
+  border-left: 1px solid #999;
+}
+.ruler.vert li:before {
+  counter-increment: vruler -1;
+  content: counter(vruler) '00';
+}
+.ruler.vert:before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 0px;
+  width: 25px;
+  height: 22px;
+  display: block;
+  border-left: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+h1 {
+  color: #0ac5f4;
+  font: 100 36px 'Lato';
+  margin: 40px 0 0 25px;
+}
+.quality {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 200px;
+  color: #999;
+  font: 12px 'Lato';
+}
+.slider {
+  width: 100%;
+}
+.track {
+  height: 2px;
+  background: rgba(153,153,153,0.5);
+}
+.dragger {
+  background: #0ac5f4;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  left: 0;
+}
+.stat {
+  width: 208px;
+  text-align: right;
+  line-height: 20px;
+  position: relative;
+}
+.stat:before {
+  color: rgba(153,153,153,0.5);
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 8px;
+}
+.stat-quality:before {
+  content: 'Quality:';
+}
+.stat-dimensions:before {
+  content: 'Dimensions:';
+}
+.stat-filesize:before {
+  content: 'Filesize:';
+}
+.download {
+  display: inline-block;
+  position: absolute;
+  top: 150px;
+  right: 40px;
+  padding: 7px 20px;
+  border-radius: 50px;
+  background-color: #0ac5f4;
+  color: #fff;
+}
+.canvas {
+  position: relative;
+  overflow: auto;
+  margin: 15px 25px;
+}
+.canvas .layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.canvas .layer.active {
+  opacity: 1;
+}

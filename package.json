@@ -1,0 +1,20 @@
+{
+  "name": "constrictor",
+  "description": "Image optimization tool",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.5",
+    "jade": "*",
+    "jquery": "1.8.3",
+    "gm": "1.11.0",
+    "stylus": "*",
+    ""
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}

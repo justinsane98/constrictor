@@ -1,0 +1,21 @@
+extends layout
+
+block header
+  h1= title
+  .quality
+    input.quality-slider(type="text", data-slider="true", data-slider-range="#{qMin},#{qMax}",data-slider-step="#{qInterval}", value=qStart, data-slider-snap="true")
+    .stat.stat-dimensions #{height} x #{width}
+    .stat.stat-quality
+    .stat.stat-filesize #{filesize}
+    input.html5(type="range",min=qMin, max=qMax, step=qInterval, value=qStart)
+  a.download(href="", download="#{download_link}") Download
+
+block content
+  .content
+    ul.canvas(style="height:#{height}px;width:#{width}px", data-path=path, data-filename=name, data-file-extension=fileExt)!= images
+
+block footer
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+  script(src='javascripts/simple-slider.js')
+  script(src='javascripts/constrictor.js')
+

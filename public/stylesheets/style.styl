@@ -1,0 +1,163 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400)
+
+pink = #ff59f7
+blue = #0ac5f4
+dark-gray = #313131
+light-gray = #999
+lato = 'Lato'
+ruler-border = 1px solid light-gray
+
+*, *:before, *:after
+  box-sizing: border-box
+body
+  margin: 0
+  background: dark-gray
+  font: 14px lato, sans-serif
+a
+  text-decoration: none
+.container
+  position: relative
+  overflow: hidden
+.ruler,
+.ruler li
+  list-style: none
+  height: 16px
+  margin: 0
+  padding: 0
+  position: relative
+.before,
+.after
+  display: block
+  width: 50px
+.before
+  border-right: ruler-border
+  height: 5px
+  padding: 2px 0 0 2px
+.after
+  content: ''
+  height: 4px
+  position: absolute
+  top: 0
+  left: 25px
+  border-left: ruler-border
+  border-right: ruler-border
+.ruler
+  position: absolute
+  top: 0
+  left: 25px
+  width: 2100px
+  font-family: monospace
+  font-size: 9px
+  padding-left: 100px
+  color: light-gray
+  li
+    float: left
+    width: 100px
+    border-left: ruler-border
+    &:after
+      @extend .after
+  &:after
+    @extend .after
+  &.horz
+    counter-reset: hruler
+    li
+      &:before
+        counter-increment: hruler
+        content: counter(hruler) '00'
+        @extend .before
+    &:before
+      content: "0"
+      position: absolute
+      top: 2px
+      left: 2px
+      @extend .before
+  &.vert
+    counter-reset: vruler 21
+    -webkit-transform:rotate(270deg)
+    top: 1042px
+    left: -1042px
+    li
+      float: left
+      width: 100px
+      border-left: ruler-border
+      &:before
+        counter-increment: vruler -1
+        content: counter(vruler) '00'
+        @extend .before
+    &:before
+      content: ''
+      position: absolute
+      bottom: -10px
+      right: 0px
+      width: 25px
+      height: 22px
+      display: block
+      border-left: ruler-border
+      border-bottom: ruler-border
+h1
+  color: blue
+  font: 100 36px lato
+  margin: 40px 0 0 25px
+
+.quality
+  position: absolute
+  top: 50px
+  right: 50px
+  width: 200px
+  color: light-gray
+  font: 12px lato
+.slider
+  width: 100%
+.track
+  height: 2px
+  background: rgba(light-gray,50%)
+.dragger
+  background: blue
+  width: 18px
+  height: 18px
+  border-radius: 50%
+  position: absolute
+  top: -8px
+  left: 0
+.stat
+  width: 208px
+  text-align: right
+  line-height: 20px
+  position: relative
+  &:before
+    color: rgba(light-gray, 0.5)
+    display: inline-block
+    text-align: left
+    position: absolute
+    top: 0
+    left: 8px
+.stat-quality
+  &:before
+    content: 'Quality:'
+.stat-dimensions
+  &:before
+    content: 'Dimensions:'
+.stat-filesize
+  &:before
+    content: 'Filesize:'
+.download
+  display: inline-block
+  position: absolute
+  top: 150px
+  right: 40px
+  padding: 7px 20px
+  border-radius: 50px
+  background-color: blue
+  color: white
+
+.canvas
+  position: relative
+  overflow: auto
+  margin: 15px 25px
+  .layer
+    position: absolute
+    top: 0
+    left: 0
+    opacity: 0
+    &.active
+      opacity: 1
